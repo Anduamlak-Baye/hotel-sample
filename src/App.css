@@ -28,9 +28,12 @@ a {
 }
 
 .logo {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   display: flex;
+}
+.logo h3{
+  margin-top: 10px;
 }
 .logo-img{
   height: 50px;
