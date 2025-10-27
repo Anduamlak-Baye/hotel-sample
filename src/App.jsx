@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import AOS from 'aos';
 
 const site = {
   name: 'Sample For Hotel 1',
@@ -46,6 +47,12 @@ const site = {
 
 export default function HotelLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once:true,
+    })
+  },[])
 
   return (
     <div className="app">
@@ -96,7 +103,7 @@ export default function HotelLanding() {
       {/* Rooms Section */}
       <section id="rooms" className="rooms">
         <h2>Rooms & Rates</h2>
-        <div className="room-grid">
+        <div data-aos = "fade-up"className="room-grid">
           {site.rooms.map((room) => (
             <div key={room.name} className="room-card">
               <img src={room.img} alt={room.name} />
@@ -113,7 +120,7 @@ export default function HotelLanding() {
       {/* Gallery Section */}
       <section id="gallery" className="gallery">
         <h2>Gallery</h2>
-        <div className="gallery-grid">
+        <div data-aos = "slide-up" className="gallery-grid">
           {site.gallery.map((src, i) => (
             <img key={i} src={src} alt={`gallery-${i}`} />
           ))}
