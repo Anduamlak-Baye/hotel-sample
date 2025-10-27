@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import AOS from 'aos';
+import Reservation from './reservation';
 
 const site = {
   name: 'Sample For Hotel',
@@ -75,6 +76,7 @@ export default function HotelLanding() {
           <a href="#rooms" onClick={() => setMenuOpen(false)}>Rooms</a>
           <a href="#gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          <a href='#reserve' onClick={() => setMenuOpen(false)}>Reserve Now </a>
         </div>
       </nav>
 
@@ -134,6 +136,10 @@ export default function HotelLanding() {
         <p>Phone: {site.contact.phone}</p>
         <p>Email: <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
         <a href={site.contact.whatsapp} className="btn-primary">WhatsApp</a>
+      </section>
+
+      <section id= "reserve">
+        <Reservation/>
       </section>
 
       {/* Footer */}
