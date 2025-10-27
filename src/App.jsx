@@ -3,7 +3,7 @@ import './App.css';
 import AOS from 'aos';
 
 const site = {
-  name: 'Sample For Hotel 1',
+  name: 'Sample For Hotel',
   tagline: 'A calm stay in the heart of the city',
   heroImage: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800&auto=format&fit=crop&sat=-20',
   about: {
