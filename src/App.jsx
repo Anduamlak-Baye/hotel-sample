@@ -1,18 +1,4 @@
-/*
-Modern-Minimalist Hotel Landing - React (CSS version)
-
-- Pure JavaScript (no TypeScript)
-- Uses plain CSS (no Tailwind)
-- Minimal and clean look
-
-Setup:
-1. Create a React app (Vite or CRA)
-2. Replace App.jsx with this file
-3. Create an App.css file with the styles below
-4. Import './App.css' at the top of this component
-*/
-
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const site = {
@@ -59,23 +45,37 @@ const site = {
 };
 
 export default function HotelLanding() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="app">
+      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
-          <img className="logo-img" src='/logo.png'></img>
+          <img className="logo-img" src="/logo.png" alt="logo" />
           <h3>{site.name}</h3>
-
         </div>
-        <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#rooms">Rooms</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
+
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? '✕' : '☰'}
+        </button>
+
+        <div className={`nav-links ${menuOpen ? 'show' : ''}`}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#rooms" onClick={() => setMenuOpen(false)}>Rooms</a>
+          <a href="#gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
       </nav>
 
-      <header className="hero" style={{ backgroundImage: `url(${site.heroImage})` }}>
+      {/* Hero Section */}
+      <header
+        className="hero"
+        style={{ backgroundImage: `url(${site.heroImage})` }}
+      >
         <div className="overlay"></div>
         <div className="hero-text">
           <h1>{site.name}</h1>
@@ -87,14 +87,16 @@ export default function HotelLanding() {
         </div>
       </header>
 
+      {/* About Section */}
       <section id="about" className="about">
         <h2>{site.about.title}</h2>
         <p>{site.about.body}</p>
       </section>
 
+      {/* Rooms Section */}
       <section id="rooms" className="rooms">
         <h2>Rooms & Rates</h2>
-        <div data-aos='fade-up' className="room-grid">
+        <div className="room-grid">
           {site.rooms.map((room) => (
             <div key={room.name} className="room-card">
               <img src={room.img} alt={room.name} />
@@ -108,16 +110,18 @@ export default function HotelLanding() {
         </div>
       </section>
 
+      {/* Gallery Section */}
       <section id="gallery" className="gallery">
         <h2>Gallery</h2>
-        <div data-aos='fade-in' className="gallery-grid">
+        <div className="gallery-grid">
           {site.gallery.map((src, i) => (
             <img key={i} src={src} alt={`gallery-${i}`} />
           ))}
         </div>
       </section>
 
-      <section data-aos='slide-up' id="contact" className="contact">
+      {/* Contact Section */}
+      <section id="contact" className="contact">
         <h2>Contact</h2>
         <p>Address: {site.contact.address}</p>
         <p>Phone: {site.contact.phone}</p>
@@ -125,8 +129,10 @@ export default function HotelLanding() {
         <a href={site.contact.whatsapp} className="btn-primary">WhatsApp</a>
       </section>
 
-      <footer className="footer">© {new Date().getFullYear()} {site.name} — Built with care.</footer>
+      {/* Footer */}
+      <footer className="footer">
+        © {new Date().getFullYear()} {site.name} — Built with care.
+      </footer>
     </div>
   );
 }
-// and for the same and at the same time they would like to say the sam stu
